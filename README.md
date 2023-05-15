@@ -4,47 +4,48 @@ The following operations are available: creating, reading, editing, removing and
 also signing in user.
 ## Setup
 
-1. The first thing to do is to clone the repository and move to the directory:
+1. The first thing to do is to clone the repository and move to the directory "users" in your terminal:
 
 ```sh
-$ git clone https://github.com/mirzomumin/user.git
-$ cd library
+$ git clone https://github.com/mirzomumin/users.git
+$ cd users
 ```
 
-2. Create a virtual environment to install dependencies in and activate it:
+## Log Files
+
+2. If it is necessary to track bugs while running web application, add logging mechanism to this app,
+otherwise just skip this step and move next. To add log files, comment out the whole "LOGGING"
+variable content which is located in ./config/settings.py and make folder named "logs" with three files 
+(warning.log, error.log, critical.log) in it like the diagram showed below.
 
 ```sh
-$ python -m venv venv
-$ source env/bin/activate
+   users
+     |------apps
+     |------config
+     |------logs
+             |----warning.log
+             |----error.log
+             |----critical.log
 ```
 
-3. Then install the dependencies from the requirements.txt file:
+## Project Launch
+
+3. To launch the project with docker run the following command:
 
 ```sh
-(env)$ pip install -r requirements.txt
+$ docker-compose up --build
 ```
-Note the `(env)` in front of the prompt. This indicates that this terminal
-session operates in a virtual environment set up by `virtualenv`.
 
-4. Once `pip` has finished downloading the dependencies run the following command
-to create database/database structure of the project:
+4. The project is running now and to check it,
+in your browser go to the address showed bellow:
 
 ```sh
-(env)$ python manage.py migrate
+$ http://127.0.0.1:8000/swagger/
 ```
-the primary database settings of django are configured for sqlite3 but
-you can set any database you wish
-
-5. After follow the command to run app on local server:
-```sh
-(env)$ python manage.py runserver
-```
-And navigate to `http://127.0.0.1:8000/swagger/`.
-
 
 ## Tests
 
 To run the tests, `cd` into the directory where `manage.py` is and run the command below:
 ```sh
-(env)$ python manage.py test
+$ docker exec user_web python manage.py test
 ```
