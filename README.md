@@ -15,7 +15,7 @@ $ cd users
 
 2. If it is necessary to track bugs while running web application, add logging mechanism to this app,
 otherwise just skip this step and move next. To add log files, comment out the whole "LOGGING"
-variable content which is located in ./config/settings.py and make folder named "logs" with three files 
+variable content which is located in ./config/settings.py and in the root directory make folder named "logs" with three files 
 (warning.log, error.log, critical.log) in it like the diagram showed below.
 
 ```sh
